@@ -1,4 +1,5 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { normalizeCpf } from '../utils/input-format.util';
 
 export function cpfValidator(control: AbstractControl): ValidationErrors | null {
   const value = control.value;
@@ -7,7 +8,7 @@ export function cpfValidator(control: AbstractControl): ValidationErrors | null 
     return null;
   }
 
-  const cpf = value.replace(/\D/g, '');
+  const cpf = normalizeCpf(value);
 
   if (cpf.length !== 11) return { cpfInvalid: true };
 

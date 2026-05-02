@@ -1,4 +1,11 @@
 <mat-form-field appearance="outline">
   <mat-label>{{ label }}</mat-label>
-  <input matInput [placeholder]="placeholder" [formControl]="control">
+  <input
+    #textInput
+    matInput
+    [placeholder]="placeholder"
+    [formControl]="control"
+    [attr.inputmode]="inputMode"
+    [attr.maxlength]="maxLength"
+    (input)="onInput($event)">
 </mat-form-field>

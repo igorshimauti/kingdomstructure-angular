@@ -21,17 +21,7 @@ export class MembroListComponent implements OnInit {
     "id",
     "nomeCompleto",
     "cpf",
-    "email",
-    "telefone",
-    "whatsapp",
-    "funcao",
-    "encontro",
-    "consolidado",
-    "batizado",
-    "ceifeiros",
-    "maturidade",
-    "ctl",
-    "seminarioPastoral"
+    "funcao"
   ];
 
   page = signal(0);

@@ -15,6 +15,8 @@ import {cpfValidator} from '@shared/validators/cpf.validator';
 import {InputBooleanComponent} from '@shared/components/input-boolean/input-boolean.component';
 import {ToastType} from '@shared/enums/toast-type.enum';
 import {InputDateComponent} from '@shared/components/input-date/input-date.component';
+import {telephoneValidator} from '@shared/validators/telephone.validator';
+import {normalizeCpf, normalizePhone} from '@shared/utils/input-format.util';
 
 @Component({
   selector: 'app-form',
@@ -34,7 +36,7 @@ export class MembroFormComponent implements OnInit {
     dataNascimento: new FormControl(''),
     cpf: new FormControl('', [Validators.required, cpfValidator]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    telefone: new FormControl(''),
+    telefone: new FormControl('', [telephoneValidator]),
     whatsapp: new FormControl(false),
     funcao: new FormControl('SEM_FUNCAO', [Validators.required]),
     encontro: new FormControl(false, [Validators.required]),
@@ -59,10 +61,11 @@ export class MembroFormComponent implements OnInit {
       this.membroService.findById(this.id!).subscribe(res => {
         this.form.patchValue({
           id: res.id,
-          cpf: res.cpf,
+          cpf: normalizeCpf(res.cpf),
           email: res.email,
           nomeCompleto: res.nomeCompleto,
-          telefone: res.telefone,
+          dataNascimento: res.dataNascimento,
+          telefone: normalizePhone(res.telefone),
           whatsapp: res.whatsapp,
           funcao: res.funcao,
           encontro: res.encontro,
@@ -90,7 +93,11 @@ export class MembroFormComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      const payload: Membro = this.form.value as Membro;
+      const payload: Membro = {
+        ...(this.form.value as Membro),
+        cpf: normalizeCpf(this.form.controls.cpf.value),
+        telefone: normalizePhone(this.form.controls.telefone.value)
+      };
 
       if (this.isEditMode) {
         this.membroService.update(this.id!, payload).subscribe(() => {
