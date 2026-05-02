@@ -1,0 +1,18 @@
+<mat-toolbar color="primary" class="header">
+  <button mat-icon-button class="menu-button" (click)="toggleSidebar.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span class="title">Estrutura do Reino</span>
+
+  <button mat-icon-button class="account-button" [matMenuTriggerFor]="accountMenu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+  <mat-menu #accountMenu="matMenu">
+    <button mat-menu-item (click)="logout.emit()">
+      <mat-icon>logout</mat-icon>
+      <span>Sair</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

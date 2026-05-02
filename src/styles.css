@@ -1,0 +1,16 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  /*box-sizing: border-box;*/
+  /*overflow-x: hidden; !* evita scroll horizontal desnecessário *!*/
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/**, *::before, *::after {*/
+/*  box-sizing: inherit;*/
+/*}*/

@@ -1,0 +1,15 @@
+<button mat-raised-button color="primary" [routerLink]="['/membros/new']">
+  <mat-icon>add</mat-icon>
+  Novo Membro
+</button>
+
+<app-table
+  [displayedColumns]="cols"
+  [dataSource]="data()"
+  [totalPages]="totalPages()"
+  [currentPage]="currentPage()"
+  [totalElements]="totalElements()"
+  (pageChange)="buscarPagina($event)"
+  (edit)="onEdit($event)"
+  (delete)="onDelete($event)">
+</app-table>

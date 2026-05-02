@@ -1,0 +1,31 @@
+button[color="primary"] {
+  font-weight: bold;
+  border-bottom: 2px solid var(--mat-primary);
+}
+
+table {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto; /* só cria scroll horizontal se realmente precisar */
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: space-between; /* esquerda e direita */
+  align-items: center;
+  margin-top: 1rem;
+  flex-wrap: wrap; /* quebra em duas linhas se não couber */
+  gap: 0.5rem;
+}
+
+.pagination-info {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+

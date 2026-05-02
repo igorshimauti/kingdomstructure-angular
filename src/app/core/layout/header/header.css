@@ -1,0 +1,26 @@
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  background-color: #fff;
+  padding: 0 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.menu-button {
+  position: absolute;
+  left: 1rem;
+}
+
+.account-button {
+  position: absolute;
+  right: 1rem;
+}

@@ -1,0 +1,19 @@
+<div class="login-container">
+  <h2>Entrar</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <app-input-text
+      label="Email"
+      [placeholder]="'Digite seu email'"
+      [control]="form.controls['email']">
+    </app-input-text>
+
+    <app-input-password
+      label="Senha"
+      [placeholder]="'Digite sua senha'"
+      [control]="form.controls['senha']">
+    </app-input-password>
+
+    <button mat-raised-button color="primary" type="submit">Login</button>
+  </form>
+</div>

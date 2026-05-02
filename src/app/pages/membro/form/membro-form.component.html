@@ -1,0 +1,145 @@
+<div class="page-header">
+  <h2>{{ isEditMode ? 'Editar Membro' : 'Novo Membro' }}</h2>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container">
+
+  <!-- SEÇÃO: Identificação -->
+  <section class="form-section">
+    <h3 class="section-title">Dados Pessoais</h3>
+    <div class="form-grid">
+      <div class="form-group">
+        <app-input-number
+          label="ID"
+          [placeholder]="'ID'"
+          [control]="form.controls['id']">
+        </app-input-number>
+      </div>
+      <div class="form-group">
+        <app-input-text
+          label="CPF"
+          [placeholder]="'CPF'"
+          [control]="form.controls['cpf']">
+        </app-input-text>
+      </div>
+      <div class="form-group form-group--full">
+        <app-input-text
+          label="Nome completo"
+          [placeholder]="'Nome completo'"
+          [control]="form.controls['nomeCompleto']">
+        </app-input-text>
+      </div>
+      <div class="form-group form-group--full">
+        <app-input-date
+          label="Data de nascimento"
+          [placeholder]="'Data de nascimento'"
+          [control]="form.controls['dataNascimento']">
+        </app-input-date>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO: Contato -->
+  <section class="form-section">
+    <h3 class="section-title">Informações de Contato</h3>
+    <div class="form-grid">
+      <div class="form-group form-group--full">
+        <app-input-text
+          label="e-Mail"
+          [placeholder]="'e-Mail'"
+          [control]="form.controls['email']">
+        </app-input-text>
+      </div>
+      <div class="form-group">
+        <app-input-text
+          label="Telefone"
+          [placeholder]="'Telefone'"
+          [control]="form.controls['telefone']">
+        </app-input-text>
+      </div>
+      <div class="form-group">
+        <app-input-boolean
+          label="Whatsapp?"
+          [control]="form.controls['whatsapp']">
+        </app-input-boolean>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO: Status Espiritual -->
+  <section class="form-section">
+    <h3 class="section-title">Status Espiritual</h3>
+    <div class="form-grid form-grid--checkbox">
+      <div class="form-group">
+        <app-input-boolean
+          label="Encontro"
+          [control]="form.controls['encontro']">
+        </app-input-boolean>
+      </div>
+      <div class="form-group">
+        <app-input-boolean
+          label="Consolidado"
+          [control]="form.controls['consolidado']">
+        </app-input-boolean>
+      </div>
+      <div class="form-group">
+        <app-input-boolean
+          label="Batizado"
+          [control]="form.controls['batizado']">
+        </app-input-boolean>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO: Status Espiritual -->
+  <section class="form-section">
+    <h3 class="section-title">Cursos Concluídos</h3>
+    <div class="form-grid form-grid--checkbox">
+      <div class="form-group">
+        <app-input-boolean
+          label="Ceifeiros"
+          [control]="form.controls['ceifeiros']">
+        </app-input-boolean>
+      </div>
+      <div class="form-group">
+        <app-input-boolean
+          label="Maturidade"
+          [control]="form.controls['maturidade']">
+        </app-input-boolean>
+      </div>
+      <div class="form-group">
+        <app-input-boolean
+          label="CTL"
+          [control]="form.controls['ctl']">
+        </app-input-boolean>
+      </div>
+      <div class="form-group">
+        <app-input-boolean
+          label="Seminário Pastoral"
+          [control]="form.controls['seminarioPastoral']">
+        </app-input-boolean>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO: Função -->
+  <section class="form-section">
+    <h3 class="section-title">Função</h3>
+    <div class="form-grid">
+      <div class="form-group form-group--full">
+        <app-input-select
+          label="Função"
+          [options]="funcoes"
+          [control]="form.controls['funcao']">
+        </app-input-select>
+      </div>
+    </div>
+  </section>
+
+  <!-- AÇÕES -->
+  <div class="form-actions">
+    <button mat-raised-button color="primary" type="submit" class="btn-submit">
+      {{ isEditMode ? 'Salvar Alterações' : 'Cadastrar' }}
+    </button>
+  </div>
+</form>
