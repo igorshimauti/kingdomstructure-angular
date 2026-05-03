@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable, tap} from 'rxjs';
 import {Token} from '@shared/models/token.model';
 import {Login} from '@shared/models/login.model';
+import MD5 from 'crypto-js/md5';
 
 
 @Injectable({
@@ -19,7 +20,12 @@ export class AuthService {
   }
 
   login(credentials: Login): Observable<Token> {
-    return this.http.post<Token>(`${this.apiUrl}/login`, credentials).pipe(
+    const payload: Login = {
+      ...credentials,
+      senha: MD5(credentials.senha).toString()
+    };
+
+    return this.http.post<Token>(`${this.apiUrl}/login`, payload).pipe(
       tap(token => {
         localStorage.setItem('type', token.type);
         localStorage.setItem('token', token.token);
