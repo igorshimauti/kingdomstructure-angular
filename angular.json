@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "trilho-angular": {
+    "kingdomstructure-angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -59,10 +59,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "trilho-angular:build:production"
+              "buildTarget": "kingdomstructure-angular:build:production"
             },
             "development": {
-              "buildTarget": "trilho-angular:build:development"
+              "buildTarget": "kingdomstructure-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
