@@ -16,6 +16,7 @@
             "outputPath": "dist/kingdomstructure-angular",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "outputMode": "static",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -28,12 +29,7 @@
               "src/custom-theme.scss",
               "src/styles.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {

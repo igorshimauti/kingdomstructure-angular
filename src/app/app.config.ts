@@ -9,7 +9,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import {routes} from './app.routes';
-import {provideClientHydration, withEventReplay} from '@angular/platform-browser';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import {authInterceptor} from '@core/interceptors/auth.interceptor';
 import {errorInterceptor} from '@core/interceptors/error.interceptor';
@@ -26,7 +25,7 @@ export const appConfig: ApplicationConfig = {
     ),
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(routes), provideClientHydration(withEventReplay()),
+    provideRouter(routes),
     provideHttpClient(withInterceptors([authInterceptor, errorInterceptor])),
     provideAnimations()
   ]

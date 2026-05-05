@@ -2,3 +2,8 @@
   command = "npm run build"
   publish = "dist/kingdomstructure-angular/browser"
 
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
