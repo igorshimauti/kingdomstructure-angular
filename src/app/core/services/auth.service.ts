@@ -11,7 +11,8 @@ import MD5 from 'crypto-js/md5';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/kingdom/auth';
+  // private apiUrl = 'http://localhost:8080/kingdom/auth';
+  private apiUrl = 'https://kingdomstructure-377235163eba.herokuapp.com/kingdom/auth';
   private platformId = inject(PLATFORM_ID);
   private _isAuthenticated = signal(false);
 

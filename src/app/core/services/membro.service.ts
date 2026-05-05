@@ -10,7 +10,8 @@ import {Page} from '@shared/models/page.model';
   providedIn: 'root'
 })
 export class MembroService extends CrudService<Membro> {
-  protected apiUrl = 'http://localhost:8080/kingdom/membro';
+  // protected apiUrl = 'http://localhost:8080/kingdom/membro';
+  protected apiUrl = 'https://kingdomstructure-377235163eba.herokuapp.com/kingdom/membro';
 
   constructor(http: HttpClient) {
     super(http);

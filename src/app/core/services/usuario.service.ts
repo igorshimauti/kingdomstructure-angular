@@ -6,5 +6,6 @@ import {CrudService} from './crud.service';
   providedIn: 'root'
 })
 export class UsuarioService extends CrudService<Usuario> {
-  protected apiUrl = 'http://localhost:8080/kingdom/usuario';
+  // protected apiUrl = 'http://localhost:8080/kingdom/usuario';
+  protected apiUrl = 'https://kingdomstructure-377235163eba.herokuapp.com/kingdom/usuario';
 }
