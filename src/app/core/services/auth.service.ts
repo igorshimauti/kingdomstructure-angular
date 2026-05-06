@@ -6,6 +6,12 @@ import {Token} from '@shared/models/token.model';
 import {Login} from '@shared/models/login.model';
 import MD5 from 'crypto-js/md5';
 
+type JwtPayload = {
+  tipo?: string;
+  tipoUsuario?: string;
+  userType?: string;
+  [key: string]: unknown;
+};
 
 @Injectable({
   providedIn: 'root'
@@ -68,6 +74,21 @@ export class AuthService {
     return this._isAuthenticated;
   }
 
+  getUserType(): string | null {
+    const payload = this.getTokenPayload();
+
+    if (!payload) {
+      return null;
+    }
+
+    const tipo = payload['tipo'] ?? payload['tipoUsuario'] ?? payload['userType'];
+    return typeof tipo === 'string' ? tipo : null;
+  }
+
+  isAdmin(): boolean {
+    return this.getUserType() === 'ADMINISTRADOR';
+  }
+
   private hasValidToken(): boolean {
     if (!isPlatformBrowser(this.platformId)) {
       return false;
@@ -83,5 +104,36 @@ export class AuthService {
 
     const expirationTime = time + expiresIn;
     return Date.now() < expirationTime;
+  }
+
+  private getTokenPayload(): JwtPayload | null {
+    if (!isPlatformBrowser(this.platformId)) {
+      return null;
+    }
+
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      return null;
+    }
+
+    const parts = token.split('.');
+
+    if (parts.length !== 3) {
+      return null;
+    }
+
+    try {
+      const payload = parts[1]
+        .replace(/-/g, '+')
+        .replace(/_/g, '/');
+
+      const normalizedPayload = payload.padEnd(Math.ceil(payload.length / 4) * 4, '=');
+      const decodedPayload = atob(normalizedPayload);
+
+      return JSON.parse(decodedPayload) as JwtPayload;
+    } catch {
+      return null;
+    }
   }
 }

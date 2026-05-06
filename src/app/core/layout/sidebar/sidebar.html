@@ -5,6 +5,13 @@
     <span>Home</span>
   </a>
 
+  @if (isAdmin()) {
+    <a mat-list-item routerLink="/usuarios">
+      <mat-icon matListIcon>manage_accounts</mat-icon>
+      <span>Usuários</span>
+    </a>
+  }
+
   <a mat-list-item routerLink="/membros">
     <mat-icon matListIcon>group</mat-icon> <!-- people -->
     <span>Membros</span>

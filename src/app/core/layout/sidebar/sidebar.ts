@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import {AuthService} from '@core/services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,4 +11,10 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './sidebar.html',
   styleUrls: [ './sidebar.css']
 })
-export class SidebarComponent {}
+export class SidebarComponent {
+  private authService = inject(AuthService);
+
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
+  }
+}
