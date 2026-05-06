@@ -66,19 +66,21 @@
     <h3 class="section-title">Dados de Acesso</h3>
     <div class="form-grid">
       <div class="form-group">
-        <app-input-text
+        <app-input-select
           label="Tipo de usuário"
-          [placeholder]="'Tipo de usuário'"
+          [options]="tipos"
           [control]="form.controls['tipoUsuario']">
-        </app-input-text>
+        </app-input-select>
       </div>
-      <div class="form-group">
-        <app-input-password
-          [label]="isEditMode ? 'Senha (opcional)' : 'Senha'"
-          [placeholder]="isEditMode ? 'Digite uma nova senha para alterar' : 'Digite a senha'"
-          [control]="form.controls['senha']">
-        </app-input-password>
-      </div>
+      @if (!isEditMode) {
+        <div class="form-group">
+          <app-input-password
+            [label]="'Senha'"
+            [placeholder]="'Digite a senha'"
+            [control]="form.controls['senha']">
+          </app-input-password>
+        </div>
+      }
     </div>
   </section>
   <div class="form-actions">

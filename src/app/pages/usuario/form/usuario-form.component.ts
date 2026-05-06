@@ -17,6 +17,7 @@ import {Usuario} from '@shared/models/usuario.model';
 import {normalizeCpf, normalizePhone} from '@shared/utils/input-format.util';
 import {cpfValidator} from '@shared/validators/cpf.validator';
 import {telephoneValidator} from '@shared/validators/telephone.validator';
+import {InputSelectComponent} from '@shared/components/input-select/input-select.component';
 @Component({
   selector: 'app-usuario-form',
   imports: [
@@ -27,6 +28,7 @@ import {telephoneValidator} from '@shared/validators/telephone.validator';
     MatButtonModule,
     InputTextComponent,
     InputNumberComponent,
+    InputSelectComponent,
     InputBooleanComponent,
     InputDateComponent,
     InputPasswordComponent
@@ -52,7 +54,10 @@ export class UsuarioFormComponent implements OnInit {
   });
   id?: number;
   isEditMode = false;
+  tipos: { [key: string]: string } = {};
+
   ngOnInit() {
+    this.carregarTipos();
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.isEditMode = !!this.id;
     if (this.isEditMode) {
@@ -73,6 +78,18 @@ export class UsuarioFormComponent implements OnInit {
       });
     }
   }
+
+  carregarTipos() {
+    this.usuarioService.getTipos().subscribe({
+      next: (tipos) => {
+        this.tipos = tipos;
+      },
+      error: () => {
+        this.toast.show('Erro ao carregar tipos de usuário', ToastType.ERROR);
+      }
+    });
+  }
+
   onSubmit() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
